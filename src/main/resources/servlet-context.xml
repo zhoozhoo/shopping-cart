@@ -14,7 +14,8 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	<import resource="persistence-config.xml" />
 
 	<mvc:annotation-driven />
-	<mvc:view-controller path="/" view-name="home" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:view-controller path="/" view-name="products" />
 
 	<context:component-scan base-package="ca.zhoozhoo.sc.web" />
 

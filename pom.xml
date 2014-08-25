@@ -23,38 +23,38 @@
 
 		<hibernate-version>4.3.6.Final</hibernate-version>
 		<hsql-version>2.3.2</hsql-version>
-		<jsp.version>2.2</jsp.version>
-		<jstl.version>1.2.3</jstl.version>
-		<log4j.version>2.0.2</log4j.version>
-		<spring.version>4.0.6.RELEASE</spring.version>
+		<jackson-version>2.4.2</jackson-version>
+		<jstl-version>1.2.3</jstl-version>
+		<log4j-version>2.0.2</log4j-version>
+		<spring.framework-version>4.0.6.RELEASE</spring.framework-version>
 
 		<!-- plugin versions -->
-		<compiler.plugin.version>3.1</compiler.plugin.version>
+		<compiler.plugin-version>3.1</compiler.plugin-version>
 
 		<!-- JUnit version -->
-		<junit.version>4.11</junit.version>
+		<junit-version>4.11</junit-version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
-			<version>${log4j.version}</version>
+			<version>${log4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>${log4j.version}</version>
+			<version>${log4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-jcl</artifactId>
-			<version>${log4j.version}</version>
+			<version>${log4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-1.2-api</artifactId>
-			<version>${log4j.version}</version>
+			<version>${log4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -65,24 +65,30 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
+			<version>${spring.framework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version>
+			<version>${spring.framework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>${spring.version}</version>
+			<version>${spring.framework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
+			<version>${spring.framework-version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -97,7 +103,7 @@
 		<dependency>
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>javax.servlet.jsp.jstl</artifactId>
-			<version>${jstl.version}</version>
+			<version>${jstl-version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>servlet-api</artifactId>
@@ -127,7 +133,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
-			<version>${junit.version}</version>
+			<version>${junit-version}</version>
 		</dependency>
 	</dependencies>
 
@@ -137,7 +143,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${compiler.plugin.version}</version>
+				<version>${compiler.plugin-version}</version>
 				<configuration>
 					<source>${java-version}</source>
 					<target>${java-version}</target>
