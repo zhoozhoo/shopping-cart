@@ -2,7 +2,6 @@ package ca.zhoozhoo.sc.repository;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,14 +15,17 @@ public class ProductRepositoryImpl implements ProductRepository {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	@Override
+	@SuppressWarnings("unchecked")
 	@Transactional
-	public List<Product> list() {
-		@SuppressWarnings("unchecked")
-		List<Product> listUser = (List<Product>) sessionFactory
-				.getCurrentSession().createCriteria(Product.class)
-				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+	@Override
+	public List<Product> findAll() {
+		return sessionFactory.getCurrentSession().createQuery("from Product")
+				.list();
+	}
 
-		return listUser;
+	@Transactional
+	@Override
+	public Product findById(Integer id) {
+		return null;
 	}
 }

@@ -5,5 +5,8 @@ import java.util.List;
 import ca.zhoozhoo.sc.model.Product;
 
 public interface ProductRepository {
-	public List<Product> list();
+	
+	public List<Product> findAll();
+
+	public Product findById(Integer id);
 }
