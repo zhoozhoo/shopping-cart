@@ -1,17 +1,17 @@
 package ca.zhoozhoo.sc.model;
 
-public class OrderItem {
+public class CartItem {
 	private Product product;
-	private Integer productQuantity;
+	private Integer quantity;
 
-	public OrderItem() {
+	public CartItem() {
 		super();
 	}
 
-	public OrderItem(Product product, Integer productQuantity) {
+	public CartItem(Product product, Integer quantity) {
 		super();
 		this.product = product;
-		this.productQuantity = productQuantity;
+		this.quantity = quantity;
 	}
 
 	public Product getProduct() {
@@ -22,17 +22,17 @@ public class OrderItem {
 		this.product = product;
 	}
 
-	public Integer getProductQuantity() {
-		return productQuantity;
+	public Integer getQuantity() {
+		return quantity;
 	}
 
-	public void setProductQuantity(Integer productQuantity) {
-		this.productQuantity = productQuantity;
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 	@Override
 	public String toString() {
-		return "OrderItem [product=" + product + ", productQuantity=" + productQuantity + "]";
+		return "CartItem [product=" + product + ", quantity=" + quantity + "]";
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class OrderItem {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((product == null) ? 0 : product.hashCode());
-		result = prime * result + ((productQuantity == null) ? 0 : productQuantity.hashCode());
+		result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
 		return result;
 	}
 
@@ -52,16 +52,16 @@ public class OrderItem {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OrderItem other = (OrderItem) obj;
+		CartItem other = (CartItem) obj;
 		if (product == null) {
 			if (other.product != null)
 				return false;
 		} else if (!product.equals(other.product))
 			return false;
-		if (productQuantity == null) {
-			if (other.productQuantity != null)
+		if (quantity == null) {
+			if (other.quantity != null)
 				return false;
-		} else if (!productQuantity.equals(other.productQuantity))
+		} else if (!quantity.equals(other.quantity))
 			return false;
 		return true;
 	}

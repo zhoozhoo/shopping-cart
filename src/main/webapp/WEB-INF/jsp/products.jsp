@@ -14,10 +14,10 @@
 					success : function(products) {
 						var table = $("#table tbody");
 						$.each(products, function(index, product) {
-							table.append('<tr><td><input type="checkbox" name="orderItems['+ index +'].productId" value="'+ product.id + '">'
-									+ "</td><td>" + product.name
-									+ "</td><td>" + product.price
-									+ '</td><td><input type="text" size="2" maxlength="2" name="orderItems['+ index +'].productQuantity"></td></tr>');
+							table.append('<tr><td><input type="checkbox" name="cartItems['+ index +'].product.id" value="'+ product.id + '">'
+									+ "</td><td>" + product.name + '<input type="hidden" name="cartItems['+ index +'].product.name" value="'+ product.name + '">'
+									+ "</td><td>" + product.price + '<input type="hidden" name="cartItems['+ index +'].product.price" value="'+ product.price + '">'
+									+ '</td><td><input type="text" size="2" maxlength="2" name="cartItems['+ index +'].quantity"></td></tr>');
 						});
 					}
 				});
@@ -28,7 +28,7 @@
 <body>
 	<div>
 		<h2>Products</h2>
-		<form:form method="POST" modelAttribute="order" action="${pageContext.request.contextPath}/review">
+		<form:form method="POST" modelAttribute="cart" action="${pageContext.request.contextPath}/review">
 			<table id="table">
 				<thead>
 					<tr>

@@ -19,19 +19,24 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="movie" items="${order.orderItems}">
+				<c:forEach var="cartItem" items="${cart.cartItems}">
 					<tr>
-						<td>${productId}</td>
-						<td>${productId}</td>
-						<td>${productQyantity}</td>
+						<td>${cartItem.product.name}</td>
+						<td>${cartItem.product.price}</td>
+						<td>${cartItem.quantity}</td>
 					</tr>
 				</c:forEach>
+				<tr>
+					<th>Total</th>
+					<th>${cart.total}</th>
+					<th></th>
+				</tr>
 			</tbody>
 		</table>
-		<form:form method="POST" action="${pageContext.request.contextPath}/previewOrder">
+
+		<form:form method="GET" action="${pageContext.request.contextPath}/confirm">
 			<p>
-				<button type="submit">Back</button>
-				<button type="submit">Confirm</button>
+				<input type="submit" name="edit" value="Back" /> <input type="submit" name="confirm" value="Confirm" />
 			</p>
 		</form:form>
 	</div>
