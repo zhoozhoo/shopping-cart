@@ -3,8 +3,6 @@ package ca.zhoozhoo.sc.web;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.MediaType;
@@ -30,12 +28,12 @@ public class ViewController {
 	private ProductRepository productRepository;
 
 	@RequestMapping(value = "/products", method = RequestMethod.GET)
-	public String products(HttpSession session) {
+	public String products() {
 		return "products";
 	}
 
 	@RequestMapping(value = "/review", method = RequestMethod.POST)
-	public ModelAndView review(@ModelAttribute("order") Cart cart, HttpSession session) {
+	public ModelAndView review(@ModelAttribute("order") Cart cart) {
 		List<CartItem> cartItems = new ArrayList<CartItem>();
 		for (CartItem cartItem : cart.getCartItems()) {
 			if ((cartItem.getProduct().getId() != null) && (cartItem.getQuantity() != null)) {
@@ -48,12 +46,12 @@ public class ViewController {
 	}
 
 	@RequestMapping(value = "/confirm", method = RequestMethod.GET, params = { "edit" })
-	public ModelAndView edit(@ModelAttribute("order") Cart cart, HttpSession session) {
-		return new ModelAndView("products", "cart", cart);
+	public ModelAndView edit(@ModelAttribute("order") Cart cart) {
+		return new ModelAndView("edit", "cart", cart);
 	}
 
 	@RequestMapping(value = "/confirm", method = RequestMethod.GET, params = { "confirm" })
-	public ModelAndView confirm(@ModelAttribute("order") Cart cart, HttpSession session) {
+	public ModelAndView confirm(@ModelAttribute("order") Cart cart) {
 		return new ModelAndView("confirm", "cart", cart);
 	}
 

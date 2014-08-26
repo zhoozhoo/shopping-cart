@@ -12,7 +12,7 @@
 				$.ajax({
 					url : "${pageContext.request.contextPath}/getAllProducts",
 					success : function(products) {
-						var table = $("#table tbody");
+						var table = $("#productsTable tbody");
 						$.each(products, function(index, product) {
 							table.append('<tr><td><input type="checkbox" name="cartItems['+ index +'].product.id" value="'+ product.id + '">'
 									+ "</td><td>" + product.name + '<input type="hidden" name="cartItems['+ index +'].product.name" value="'+ product.name + '">'
@@ -29,7 +29,7 @@
 	<div>
 		<h2>Products</h2>
 		<form:form method="POST" modelAttribute="cart" action="${pageContext.request.contextPath}/review">
-			<table id="table">
+			<table id="productsTable">
 				<thead>
 					<tr>
 						<th width="30"></th>
