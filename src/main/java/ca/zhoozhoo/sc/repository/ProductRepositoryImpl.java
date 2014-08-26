@@ -19,13 +19,12 @@ public class ProductRepositoryImpl implements ProductRepository {
 	@Transactional
 	@Override
 	public List<Product> findAll() {
-		return sessionFactory.getCurrentSession().createQuery("from Product")
-				.list();
+		return sessionFactory.getCurrentSession().createQuery("from Product").list();
 	}
 
 	@Transactional
 	@Override
-	public Product findById(Integer id) {
-		return null;
+	public Product findById(Integer productId) {
+		return (Product) sessionFactory.getCurrentSession().byId(Product.class).load(productId);
 	}
 }

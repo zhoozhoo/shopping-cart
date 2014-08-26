@@ -22,7 +22,6 @@ public class OrderRepositoryImpl implements OrderRepository {
 	@Transactional
 	@Override
 	public Order findById(Integer orderId) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Order) sessionFactory.getCurrentSession().byId(Order.class).load(orderId);
 	}
 }
