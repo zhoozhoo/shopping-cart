@@ -1,21 +1,33 @@
 package ca.zhoozhoo.sc.model;
 
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "order_table")
 public class Order {
 	private Integer id;
-	private List<OrderItem> orderItems;
+	private Set<OrderItem> orderItems;
 
 	public Order() {
 		super();
 	}
 
-	public Order(Integer id, List<OrderItem> orderItems) {
+	public Order(Integer id, Set<OrderItem> orderItems) {
 		super();
 		this.id = id;
 		this.orderItems = orderItems;
 	}
 
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
 	public Integer getId() {
 		return id;
 	}
@@ -24,11 +36,12 @@ public class Order {
 		this.id = id;
 	}
 
-	public List<OrderItem> getOrderItems() {
+	@OneToMany(mappedBy = "order")
+	public Set<OrderItem> getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(List<OrderItem> orderItems) {
+	public void setOrderItems(Set<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
 

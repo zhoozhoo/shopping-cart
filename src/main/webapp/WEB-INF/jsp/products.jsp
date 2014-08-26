@@ -11,13 +11,24 @@
 			function() {
 				$.ajax({
 					url : "${pageContext.request.contextPath}/getAllProducts",
+					async : false,
 					success : function(products) {
 						var table = $("#productsTable tbody");
 						$.each(products, function(index, product) {
-							table.append('<tr><td><input type="checkbox" name="cartItems['+ index +'].product.id" value="'+ product.id + '">'
+							table.append('<tr><td><input type="checkbox" id="checkbox_'+ product.id + '" name="cartItems['+ index +'].product.id" value="'+ product.id + '">'
 									+ "</td><td>" + product.name + '<input type="hidden" name="cartItems['+ index +'].product.name" value="'+ product.name + '">'
 									+ "</td><td>" + product.price + '<input type="hidden" name="cartItems['+ index +'].product.price" value="'+ product.price + '">'
-									+ '</td><td><input type="text" size="2" maxlength="2" name="cartItems['+ index +'].quantity"></td></tr>');
+									+ '</td><td><input type="text" size="2" maxlength="2" id="quantity_'+ product.id + '" name="cartItems['+ index +'].quantity"></td></tr>');
+						});
+					}
+				});
+				$.ajax({
+					url : "${pageContext.request.contextPath}/getCart",
+					async : false,
+					success : function(cart) {
+						$.each(cart.cartItems, function(index, cartItem) {
+							$("#checkbox_" + cartItem.product.id).prop('checked', true);
+							$("#quantity_" + cartItem.product.id).prop('value', cartItem.quantity);
 						});
 					}
 				});

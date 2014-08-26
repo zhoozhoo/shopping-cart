@@ -2,6 +2,7 @@ package ca.zhoozhoo.sc.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,6 +14,8 @@ public class Product {
 	private Float price;
 
 	@Id
+	@GeneratedValue
+	@Column(name = "id")
 	public Integer getId() {
 		return id;
 	}
