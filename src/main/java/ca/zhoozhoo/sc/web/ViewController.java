@@ -1,8 +1,10 @@
 package ca.zhoozhoo.sc.web;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -73,10 +75,14 @@ public class ViewController {
 		order.setOrderItems(orderItems);
 
 		Integer orderId = orderRepository.save(order);
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("orderId", orderId);
+		model.put("total", cart.getTotal());
 
 		httpSession.setAttribute(CART, null);
 
-		return new ModelAndView("confirm", "orderId", orderId);
+		return new ModelAndView("confirm", model);
 	}
 
 	@RequestMapping(value = "/getAllProducts", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

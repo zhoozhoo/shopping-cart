@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
@@ -19,16 +20,17 @@
 				</tr>
 			</thead>
 			<tbody>
+				<fmt:setLocale value="en_US" scope="session" />
 				<c:forEach var="cartItem" items="${cart.cartItems}">
 					<tr>
 						<td>${cartItem.product.name}</td>
-						<td>${cartItem.product.price}</td>
+						<td><fmt:formatNumber value="${cartItem.product.price}" type="currency" /></td>
 						<td>${cartItem.quantity}</td>
 					</tr>
 				</c:forEach>
 				<tr>
 					<th>Total</th>
-					<th>${cart.total}</th>
+					<th><fmt:formatNumber value="${cart.total}" type="currency" /></th>
 					<th></th>
 				</tr>
 			</tbody>
