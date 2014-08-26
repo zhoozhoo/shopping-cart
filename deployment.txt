@@ -1,0 +1,11 @@
+Requirements
+------------
+JDK 1.7+
+Apache Tomcat 7.0+
+
+Instructions
+------------
+Rename shopping-cart-xxx.war to shopping-cart.war.
+Copy shopping-cart.war to webapps directory in Tomcat installation.
+Start Tomcat
+Point your browser to http://localhost:8080/shopping-cart/

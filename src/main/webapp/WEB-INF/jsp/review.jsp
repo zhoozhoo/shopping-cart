@@ -10,25 +10,25 @@
 <body>
 	<div>
 		<h2>Review Order</h2>
-		<form:form method="POST" action="${pageContext.request.contextPath}/previewOrder">
-			<table id="table">
-				<thead>
+		<table id="table">
+			<thead>
+				<tr>
+					<th width="100">Name</th>
+					<th width="100">Price</th>
+					<th>Quantity</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="movie" items="${order.orderItems}">
 					<tr>
-						<th width="100">Name</th>
-						<th width="100">Price</th>
-						<th>Quantity</th>
+						<td>${productId}</td>
+						<td>${productId}</td>
+						<td>${productQyantity}</td>
 					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="movie" items="${order.orderItems}">
-						<tr>
-							<td>${productId}</td>
-							<td>${productId}</td>
-							<td>${productQyantity}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+				</c:forEach>
+			</tbody>
+		</table>
+		<form:form method="POST" action="${pageContext.request.contextPath}/previewOrder">
 			<p>
 				<button type="submit">Back</button>
 				<button type="submit">Confirm</button>
