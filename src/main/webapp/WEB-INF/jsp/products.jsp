@@ -16,8 +16,8 @@
 						var table = $("#productsTable tbody");
 						$.each(products, function(index, product) {
 							table.append('<tr><td><input type="checkbox" id="checkbox_'+ product.id + '" name="cartItems['+ index +'].product.id" value="'+ product.id + '">'
-									+ "</td><td>" + product.name + '<input type="hidden" name="cartItems['+ index +'].product.name" value="'+ product.name + '">'
-									+ "</td><td>" + product.price + '<input type="hidden" name="cartItems['+ index +'].product.price" value="'+ product.price + '">'
+									+ "</td><td>" + product.name 
+									+ "</td><td>" + product.price 
 									+ '</td><td><input type="text" size="2" maxlength="2" id="quantity_'+ product.id + '" name="cartItems['+ index +'].quantity"></td></tr>');
 						});
 					}
@@ -44,8 +44,8 @@
 				<thead>
 					<tr>
 						<th width="30"></th>
-						<th width="100">Name</th>
-						<th width="100">Price</th>
+						<th width="200">Name</th>
+						<th width="60">Price</th>
 						<th>Quantity</th>
 					</tr>
 				</thead>

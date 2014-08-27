@@ -14,8 +14,8 @@
 		<table id="table">
 			<thead>
 				<tr>
-					<th width="100">Name</th>
-					<th width="100">Price</th>
+					<th width="200">Name</th>
+					<th width="60">Price</th>
 					<th>Quantity</th>
 				</tr>
 			</thead>

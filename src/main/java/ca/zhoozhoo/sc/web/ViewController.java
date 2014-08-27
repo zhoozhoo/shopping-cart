@@ -46,7 +46,9 @@ public class ViewController {
 	public ModelAndView review(@ModelAttribute("order") Cart cart, HttpSession httpSession) {
 		List<CartItem> cartItems = new ArrayList<CartItem>();
 		for (CartItem cartItem : cart.getCartItems()) {
-			if ((cartItem.getProduct().getId() != null) && (cartItem.getQuantity() != null)) {
+			if ((cartItem.getProduct() != null) && (cartItem.getProduct().getId() != null)
+					&& (cartItem.getQuantity() != null)) {
+				cartItem.setProduct(productRepository.findById(cartItem.getProduct().getId()));
 				cartItems.add(cartItem);
 			}
 		}
@@ -75,7 +77,7 @@ public class ViewController {
 		order.setOrderItems(orderItems);
 
 		Integer orderId = orderRepository.save(order);
-		
+
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("orderId", orderId);
 		model.put("total", cart.getTotal());
