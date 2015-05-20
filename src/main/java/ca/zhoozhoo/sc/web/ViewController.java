@@ -1,11 +1,6 @@
 package ca.zhoozhoo.sc.web;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,11 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import ca.zhoozhoo.sc.model.Cart;
-import ca.zhoozhoo.sc.model.CartItem;
-import ca.zhoozhoo.sc.model.Order;
-import ca.zhoozhoo.sc.model.OrderItem;
-import ca.zhoozhoo.sc.model.Product;
+import ca.zhoozhoo.sc.model.*;
 import ca.zhoozhoo.sc.repository.OrderRepository;
 import ca.zhoozhoo.sc.repository.ProductRepository;
 
@@ -45,13 +36,13 @@ public class ViewController {
 	@RequestMapping(value = "/review", method = RequestMethod.POST)
 	public ModelAndView review(@ModelAttribute("order") Cart cart, HttpSession httpSession) {
 		List<CartItem> cartItems = new ArrayList<CartItem>();
-		for (CartItem cartItem : cart.getCartItems()) {
-			if ((cartItem.getProduct() != null) && (cartItem.getProduct().getId() != null)
-					&& (cartItem.getQuantity() != null)) {
-				cartItem.setProduct(productRepository.findById(cartItem.getProduct().getId()));
-				cartItems.add(cartItem);
-			}
-		}
+
+		cart.getCartItems().stream().filter(cartItem -> (cartItem.getProduct() != null)
+				&& (cartItem.getProduct().getId() != null) && (cartItem.getQuantity() != null)).forEach(cartItem -> {
+					cartItem.setProduct(productRepository.findById(cartItem.getProduct().getId()));
+					cartItems.add(cartItem);
+				});
+
 		cart.setCartItems(cartItems);
 		httpSession.setAttribute(CART, cart);
 
